@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+<!--creacion de una platilla del tecnologico donde se puede visualizar algo de la historia y de los  -->
+{% block content %}
+      <div class="contenido" id="contenido">
+        <img class="d-block w-100" src="{% static 'img/4.jpg' %}">
+        <h1 id="h1_t">Conoce mas ....</h1>
+        <button id="btnjs" style="margin-left: 600px;" class="btn btn-primary">Ver Detalles</button>
+      </div>
+
+      <div id="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tecnologico de la laguna </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <h6>Historia</h6>
+                <p>
+                El Instituto Tecnológico Regional de La Laguna No. 13, llamado así en un principio[cita requerida], se creó con el fin de satisfacer la necesidad de contar con técnicos especializados y profesionistas capaces de promover, planear, dirigir y organizar las industrias existentes y las de nueva creación.
+
+                Se creó por la iniciativa de un grupo de egresados del Instituto Politécnico Nacional y a la acción conjunta del entonces Presidente de la República, el Lic. Gustavo Díaz Ordaz y el Alcalde de Torreón, el Ing. Heriberto Ramos González.[cita requerida]
+                
+                Hasta el año de 1987, se contaba con la impartición de educación de nivel medio superior</p>
+                <h6>Eventos</h6>
+                <img class="d-block w-100" src="{% static 'img/25.png' %}" alt="Second slide">
+            </div>
+            <div class="modal-footer">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	
+	  <!--uso de java script para la visualizacion de un modal-->
+<script>
+$(document).ready(function(){
+    $("#btnjs").click(function(){
+        $('#modal').modal('show');      
+})
+})
+</script>
+
+
+{% endblock content%}

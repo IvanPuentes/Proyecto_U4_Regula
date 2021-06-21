@@ -1,0 +1,45 @@
+<style>
+    #cont_v{
+        border-color: rgb(107, 36, 95);
+        border-style: solid;
+        width: 30%;
+        height: 400px;
+        float: left;
+        text-align: center;
+        margin-left: 30px;
+        margin-top: 25px;
+        border-radius: 30px;
+    }
+    #home_img{
+        width: 300px;
+        height: 250px;
+        border-radius: 20px;
+    }
+    #lista{
+        list-style: none;
+    }
+</style>
+
+{% extends 'base.html' %}
+
+{% block title %} Busquedas{% endblock title %}
+{% block content %}
+
+{% for vuelo in listaBook  %}
+
+    <div id="cont_v">
+        <h2><a  href="{% url 'DescVuelos' vuelo.pk %}">{{ vuelo.ciudad }}</a></h2>
+        <li id="lista">Descripcion:{{ vuelo.descrpicion}}</li>
+        <li id="lista">Escala:{{ vuelo.escala}}</li>
+        <li id="lista">Presio:{{vuelo.presio}}</li>
+        <img id="home_img" src = {{vuelo.img.url}} >
+    </div>
+{% endfor %}
+{% endblock content%}
+
+
+
+
+
+
+

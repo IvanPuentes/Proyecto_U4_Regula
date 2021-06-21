@@ -1,0 +1,128 @@
+{% load static %}
+<!--Archivo base -->
+<!DOCTYPE html>
+<html>
+	<!-- direcciones de bootsrap ademas de css  -->
+<head>
+	<title>Go Travel</title>
+</head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA_Compatible" content="IE-edge">
+<meta name="viewport" content="wisth=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--Archivo base -->
+
+<!--la pagina esta dividida para que entren como usuarios super usarios o una prosna que no tiene rol-->
+          {% block contect %}
+          {% if user.is_superuser%}
+           
+            <body style="background-color: rgb(1, 1, 37);height: auto;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="{% url 'home' %}">Viajes</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                 
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'vuelo' %}">Vuelos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'hospedaje' %}">Hospedajes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_change_password' %}">Cambiar tu contraseña</a>
+                  </li>
+                  
+                </ul>
+      
+
+
+           
+              <span>Bienvenido &nbsp; {{ user.username }}</span>
+              <a class="nav-link" href="{% url 'account_logout' %}">log out</a>
+           
+           
+            </body>
+            {% elif user.is_authenticated %}
+            <body style="background-color:rgba(0, 0, 0, 0.158)">
+              <nav class="navbar navbar-expand-lg " style="background-color: black;">
+                <a class="navbar-brand" style="color: white;" href="{% url 'About' %}">Go Travel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" style="color: white;" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" style="color: white;" href="{% url 'vuelo' %}">Vuelos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" style="color: white;" href="{% url 'hospedaje' %}">Hospedajes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" style="color: white;" href="{% url 'account_change_password' %}">Cambiar tu contraseña</a>
+                    </li>
+                   
+                   
+                    
+                  </ul>
+             
+                  <span style="color: white;">Bienvenido &nbsp; {{ user.username }}</span>
+                  <a class="nav-link" href="{% url 'account_logout' %}">log out</a>
+               
+                 </body>
+
+            {% else %}
+            
+              <body >
+            <nav class="navbar navbar-expand-lg " style="background-color: black;">
+              <a class="navbar-brand" style="color: white;" href="{% url 'About' %}">Go Travel</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" style="color: white;" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="{% url 'vuelo' %}">Vuelos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="{% url 'hospedaje' %}">Hospedajes</a>
+                  </li>
+               
+                  
+                
+                 
+                  
+                </ul>
+            <a class="nav-link" style="color: white;" href="{% url 'account_login' %}">Inicio de sesion <span class="sr-only">(current)</span></a>
+          </body>
+            {% endif %}
+    
+          {% endblock contect%}
+
+
+
+                 </div>
+      </nav>
+
+    {% block content %}
+           
+	{% endblock content%}
+
+
+<footer>
+
+</footer>
+</html>

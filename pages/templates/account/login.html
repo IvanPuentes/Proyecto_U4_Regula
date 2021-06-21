@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="contenedor_login">
+        <h2 id="titulo">Log In</h2>
+        <form action="" method="POST">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary" id="botonsusecc">Login</button>
+            <a type="button" class="btn btn-warning" href="{% url 'account_signup'%}">Registrar</a>
+           <div id="div_rec">
+            <a  href="{% url 'account_reset_password' %}" id="reset"><br>Olvidaste tu contraseña????</a>
+			
+           </div>
+                   </form>
+
+                </div>            
+<style>
+#contenedor_login{
+    background-image:url("{% static 'img/login.jpg' %}");
+    height: 600px;
+    width: 1350px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-left: 400px;
+    padding-top: 120px;
+    color: white;
+}
+
+#titulo{
+    color: white;
+}
+#reset{
+    color: white;
+    font-size: 20px;
+}
+
+</style>
+
+
+
+
+    {% endblock content%}
+
+

@@ -1,0 +1,50 @@
+<style>
+    #img_div
+{
+    width: 50%;
+    height: 70%;
+}
+#datos_div{
+    margin-left: 200px;
+    padding-top: 20px;
+    text-align: center;
+    background-color: white;
+    width: 800px;
+    height: 500px;
+    border-color: rgba(192, 3, 3, 0.24);
+    background-color: rgba(13, 108, 216, 0.568);
+    border-radius: 10px;
+    border-style: solid;
+}
+#btn_comprar{
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(128, 128, 128, 0.226);
+    color: indigo;
+    border-radius:10px;
+   
+}
+
+</style>
+{% extends 'base.html' %}
+{% load static %}
+<ul id="lista_1">
+    <h1> Descripcion del viaje</h1>
+    <!--descripcion de un vuelo   -->
+    {% block content %}
+    
+      
+    <div id="datos_div">
+        <img id="img_div" src = {{Listado_viajes_des.img.url}} >
+
+        
+        <div>Ciudad:{{Listado_viajes_des.ciudad}}</div>
+        <div>Descripcion:{{Listado_viajes_des.descrpicion}}</div>
+        <a type="button" class="btn" href="{% url 'orders' Listado_viajes_des.pk %}" id="btn_comprar"><strong>Pagar: ${{Listado_viajes_des.presio}}</strong></a>
+        <button id="btnjs" style="margin-left: 600px;" class="btn btn-primary">Ver Detalles</button>
+
+        
+    </div>
+    
+    
+    {% endblock content %}
+</ul>  

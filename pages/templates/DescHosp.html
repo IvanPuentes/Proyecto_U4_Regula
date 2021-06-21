@@ -1,0 +1,67 @@
+<style>
+    p{
+         color: white;
+     }
+     #id_ciudad{
+         width: 350px;
+         height: 30px;
+         margin-left: 35px;
+     }
+     #id_beneficios{
+         width: 350px;
+         height: 30px;
+         margin-left: 10px;
+     }
+     #id_escala{
+         width: 350px;
+         height: 30px;
+         margin-left: 40px;
+     }
+     #id_presio{
+         width: 350px;
+         height: 30px;
+         margin-left: 45px;
+     }
+     #id_img{
+         width: 350px;
+         height: 30px;
+         margin-left: 50px;
+     }
+     #btn_guardar{
+         color:green;
+         width: 150px;
+         height: 40px;
+     }
+     #tit{
+         color: white;
+         font-family: Arial, Helvetica, sans-serif;
+         margin-bottom: 30px;
+     }
+     #conte_vuelo{
+         text-align: center;
+     }
+ 
+ </style>
+
+{% extends 'base.html' %}
+{% load static %}
+<!--descripcion de un Hospedaje   -->
+<ul id="lista_1">
+    <h1> Descripcion del viaje</h1>
+    
+    {% block content %}
+    
+         <!--descripcion de un modelo de hospedaje   -->
+   
+    <div id="datos_div">
+        <img id="img_div" src = {{Listado_viajes_des.img.url}} >
+        <div>Destino:{{Listado_viajes_des.ciudad}}</div>
+        <div>Detalles:{{Listado_viajes_des.descrpicion}}</div>
+        <div>Numero de Noches:{{Listado_viajes_des.noches}}</div>
+        <a type="button" class="btn" href="{% url 'orders_hosp' Listado_viajes_des.pk %}" id="btn_comprar"><strong>Pagar: ${{Listado_viajes_des.presio}}</strong></a>
+        
+    </div>
+
+    
+    {% endblock content %}
+</ul>  

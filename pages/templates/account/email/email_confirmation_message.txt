@@ -1,0 +1,9 @@
+{% load account %}
+{% load i18n %}
+
+{% block content %}{% autoescape off %}
+{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+El usuario es correcto {{ user_display }} registro su correo en el siguiente sitio {{ site_domain }}
+
+si esto es correcto, favor de confirmar {{ activate_url }}{% endblocktrans %}{% endautoescape off %}{% endblock content%}

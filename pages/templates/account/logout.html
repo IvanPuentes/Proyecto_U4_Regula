@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<div id="contenedor_logout">
+    <div id="cont_lo">
+    <h1>{% trans "Sign Out" %}</h1>
+
+    <p >{% trans 'Estas seguro de que desea salir del usario actual?' %}</p>
+
+    <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button type="submit" id="btn_guardar" ></button>
+    
+    </form>
+
+    
+</div>
+</div>
+
+<style>
+   
+   #img_can{
+       width: 100px;
+       height: 80px;
+   }
+   #cont_lo{
+    background-color: rgba(255, 255, 255, 0.329);
+    width: 500px;
+    text-align: center;
+    height: 300px;
+   }
+   
+    #btn_guardar{
+         
+         background-color: rgba(255, 255, 255, 0);
+         border-radius: 100px;
+         background-image: url("{% static 'img/logout3.jpg' %}");
+         width: 150px;
+         height: 140px;
+         background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        
+     }
+      
+     #contenedor_logout{
+        background-image:url("{% static 'img/logout2.jpeg' %}");
+        height: 600px;
+        width: 1350px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 200px;
+        padding-top: 80px;
+        color: black;
+    }
+    
+    #titulo{
+        color: white;
+    }
+
+</style>
+
+{% endblock %}

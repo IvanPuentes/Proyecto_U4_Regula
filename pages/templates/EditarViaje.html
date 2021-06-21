@@ -1,0 +1,61 @@
+<style>
+    p{
+         color: white;
+     }
+     #id_ciudad{
+         width: 350px;
+         height: 30px;
+         margin-left: 35px;
+     }
+     #id_descrpicion{
+         width: 350px;
+         height: 30px;
+         margin-left: 10px;
+     }
+     #id_noches{
+         width: 350px;
+         height: 30px;
+         margin-left: 40px;
+     }
+     #id_presio{
+         width: 350px;
+         height: 30px;
+         margin-left: 45px;
+     }
+     #id_img{
+         width: 350px;
+         height: 30px;
+         margin-left: 50px;
+     }
+     #btn_guardar{
+         color:green;
+         width: 150px;
+         height: 40px;
+     }
+     #tit{
+         color: white;
+         font-family: Arial, Helvetica, sans-serif;
+         margin-bottom: 30px;
+     }
+     #conte_vuelo{
+         text-align: center;
+     }
+ 
+ </style>
+{% extends 'base.html' %}
+
+
+<!--valores para ediar del modelo de Viajes-->
+{% block content %}
+
+<div id="conte_vuelo">
+    <h1 id="tit">Editar Viajes</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}} 
+    {{form.as_p}}
+<input type="submit" value="Guardar" id="btn_guardar"> 
+</form>
+</div
+{%endblock content %}
+

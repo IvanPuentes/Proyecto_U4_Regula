@@ -1,0 +1,30 @@
+<style>
+    #img_div
+    {
+        width: 30%;
+        height: 60%;
+        margin-bottom: 20px;
+    }
+    </style>
+    {% extends 'base.html' %}
+    {% block title %}Orders{% endblock title%}
+    {% block content %}
+    <div style="text-align: center;">
+    <h1>Registro de pago</h1>
+    <p >Gracias por preferir nuestra empresa por <br>
+        el costo de tu servicoo sera de ${{Listado_viajes_des.presio}}</p>
+    <img id="img_div" src = {{Listado_viajes_des.img.url}} >
+    <form action="{% url 'charge' %}" method="post">
+        {% csrf_token %}
+        <input value="{{Listado_viajes_des.presio}}00" id="canitdad" name="cantidad">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ stripe_key }}"
+            data-description="Acceso total"
+            data-amount="{{Listado_viajes_des.presio}}00"
+            data-locale="auto">
+        </script>
+    
+    </form>
+    
+    </div>
+    {% endblock content%}

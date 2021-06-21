@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head_title %}{% trans "Verifica la direccion en tu email" %}{% endblock %}
+
+{% block content %}
+<div id="contenedor_signup_v" >
+    <h1>{% trans "Por favor verifica tu email" %}</h1>
+    <p>{% blocktrans %}Hola querido usario nosotros emos enviado un correo de verficacion a tu email <br>
+        por favor para continuar el proceso entra a el link que esta en el correo{% endblocktrans %}</p>
+
+      
+</div>
+
+<style>
+   
+    #contenedor_signup_v{
+        background-image:url("{% static 'img/verificacion.jpg' %}");
+        height: 600px;
+        width: 1350px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 200px;
+        padding-top: 80px;
+        color: black;
+    }
+    
+    #titulo{
+        color: black;
+    }
+    #reset{
+        color: black;
+        font-size: 20px;
+    }
+    
+</style>
+{% endblock content %}

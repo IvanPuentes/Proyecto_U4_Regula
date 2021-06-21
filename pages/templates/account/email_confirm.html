@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load account %}
+{% load static %}
+{% block head_title %}{% trans "Confirmacion de correo" %}{% endblock %}
+
+
+{% block content %}
+<div id="contenedor_confirm">
+<h1>{% trans "Confirmacion de correo" %}</h1>
+
+{% if confirmation %}
+
+{% user_display confirmation.email_address.user as user_display %}
+   
+
+<p>{% blocktrans with confirmation.email_address.email as email %}Por favor confirme este mensaje <a  id="reset" href="mailto:{{email}}">{{ email }}</a> esto es una direccion ip para el usuario {{ user_display }}.{% endblocktrans %}</p>
+
+<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+{% csrf_token %}
+    <button class="btn btn-primary" type="submit">{% trans 'Confirmar' %}</button>
+</form>{% load i18n %}
+
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}este email de confimacion a expirado o es invalido. Por favor  <a id="reset" href="{{ email_url}}">solicita una nueva solicitud de confirmacion via email</a>.{% endblocktrans %}</p>
+</div>
+{% endif %}
+
+
+
+<style>
+    #contenedor_confirm{
+        background-image:url("{% static 'img/confirmar.jpg' %}");
+        height: 600px;
+        width: 1350px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 100px;
+        padding-top: 40px;
+        color: black;
+    }
+    
+    #titulo{
+        color: black;
+    }
+    #reset{
+        color: rgb(6, 66, 156);
+       
+    }
+    
+    </style>
+
+{% endblock %}

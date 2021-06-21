@@ -1,0 +1,26 @@
+<style>
+    #tit{
+       color: white;
+       font-family: Arial, Helvetica, sans-serif;
+       margin-bottom: 30px;
+   }
+
+   #btn_guardar{
+       color:red;
+       width: 150px;
+       height: 40px;
+       margin-left: 600px;
+   }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+
+<!--Formulario para eliminar-->
+
+<h1 id="tit">Seguro que deseas eliminar este registro?</h1>
+<form action="" method="post">{% csrf_token %} 
+  {{form.as_p}}
+<input type="submit" value="Confirmar" id="btn_guardar"> 
+</form>
+{%endblock content %}
+

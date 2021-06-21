@@ -1,0 +1,58 @@
+<style>
+    #contabout{
+        width: 1350px;
+        height: 600px;
+        background-color: brown;
+        padding-top: 50px;
+    }
+    #contabout1{
+        width: 550px;
+        height: 500px;
+        background-color: #ffffff;
+        margin-left: 400px;
+
+         border-style: solid;
+        border-color: rgba(14, 13, 13, 0.219);
+        border-radius: 5px;   
+    }
+    #up_tit{
+        text-align: center;
+        border-bottom-color:rgba(14, 13, 13, 0.219);
+        border-bottom-style: solid;
+
+    }
+    #btn_azul{
+        background-color: blue;
+        color: white;
+        width: 200px;
+        margin-left: 150px;
+       
+    }
+</style>
+<!--Agregar el archivo base -->
+{% extends 'base.html' %}
+{% block content %}
+<!--creacion del archivo de acerca de de la empresa que contendra la informacion de la empresa ademas de
+un boton que te direccionara a la pagina del tecnologico  -->
+   <div id="contabout">
+        <div id="contabout1">
+            <div id="up_tit"><h3>Acerca de Go Travel</h3></div>
+            <div style="height: 60%;">
+                <h3 style="text-align: center;">Mision</h3>
+                <p style="text-align: center;">nuestra mision es ser la mejor empresa de transporte del pais ademas de ser una de las empresas mas grandes que exista </p>
+
+                <h3 style="text-align: center;">Vision</h3>
+                <p style="text-align: center;">ser una de las 5 empresas principales de viaje en el mundo otorgando el ejor serviso a nuestros clientes</p>
+                
+               
+            </div>
+
+            <div>
+                <p style="text-align: center;">derechos reservados. crador y director del proyecto Ivan Andres Puentes Cortez proyecto de la unidad 3 de la materia de pila 2 </p>
+                <a type="button" id="btn_azul" class="btn"  href="{%url 'tec'%}">Tecnologico</a>
+
+            </div>
+        </div> 
+   </div>
+
+{% endblock content %}

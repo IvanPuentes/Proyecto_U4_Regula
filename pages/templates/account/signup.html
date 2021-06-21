@@ -1,0 +1,63 @@
+<style>
+    #cont{
+        text-align: center;
+    }
+</style>
+
+{% extends 'base.html' %}
+<!--link para registrar el usario-->
+{% load static %}
+    {% block content %}
+
+<div id="contenedor_signup">
+
+<div id="cont">
+    <h2 id="titulo">Registrar</h2>
+    
+    <form action="" method="post" >{% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <br><br><br><br>
+    </form>
+</div>
+</div>
+
+
+<style>
+    #cont{
+        background-color: rgba(255, 255, 255, .4);
+        width: 450px;
+        height: 350px;
+        border-color: rgba(0, 0, 0, 0.5);
+        border-style: solid;
+        border-radius: 10px;
+      
+
+    }
+    #contenedor_signup{
+        background-image:url("{% static 'img/signup.jpg' %}");
+        height: 600px;
+        width: 1350px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 200px;
+        padding-top: 80px;
+        color: black;
+    }
+    
+    #titulo{
+        color: black;
+    }
+    #reset{
+        color: black;
+        font-size: 20px;
+    }
+    
+</style>
+{% endblock content%}
+
+
+
