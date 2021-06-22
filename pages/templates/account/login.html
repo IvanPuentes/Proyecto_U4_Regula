@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+
 {% block content %}
 <div id="contenedor_login">
         <h2 id="titulo">Log In</h2>
@@ -9,10 +14,12 @@
             <a type="button" class="btn btn-warning" href="{% url 'account_signup'%}">Registrar</a>
            <div id="div_rec">
             <a  href="{% url 'account_reset_password' %}" id="reset"><br>Olvidaste tu contraseña????</a>
+            
 			
            </div>
                    </form>
-
+                   <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+                   <!--<a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook conect</a>-->
                 </div>            
 <style>
 #contenedor_login{

@@ -27,5 +27,6 @@ urlpatterns = [
     path('Descripcion/Vuelos/<int:pk>',DescripVuelosPageView.as_view(),name='DescVuelos'),
     path('Descripcion/Hospedajes/<int:pk>',DescripHospPageView.as_view(),name='DescHosp'),
     path('Viaje/<int:pk>/delete',ViajeDeleteView.as_view(),name='deleteViaje'),
+    path('oauth/', include('social_django.urls', namespace='social')), 
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

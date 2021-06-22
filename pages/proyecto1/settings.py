@@ -56,19 +56,24 @@ EMAIL_USE_TLS = True
 INSTALLED_APPS = [
     'mipagina.apps.MipaginaConfig',
     'orders.apps.OrdersConfig',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    
+    'allauth.socialaccount',
+    'social_django',
+    'allauth.socialaccount.providers.facebook',
+   
 ]
 
 SITE_ID = 1
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 TIME_ZONE='America/Monterrey'
 
@@ -80,7 +85,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-   
+    'social_django.middleware.SocialAuthExceptionMiddleware', 
 ]
 
 ROOT_URLCONF = 'proyecto1.urls'
@@ -96,10 +101,26 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect', # <-- Here
             ],
         },
     },
 ]
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_link']
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = { 
+    'fields':'id, name, email, picture.type(large), link'
+}
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name','name'),
+    ('email','email'),
+    ('picture','picture'),
+    ('link', 'profile_url'),
+]
+
 
 WSGI_APPLICATION = 'proyecto1.wsgi.application'
 
@@ -107,6 +128,7 @@ AUTHENTICATION_BACKENDS = [
    
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.facebook.FacebookOAuth2'
 
 ]
 
@@ -173,8 +195,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 AUTH_USER_MODEL = 'mipagina.UsuarioPers'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'home'
 
 STRIPE_TEST_PUBLISHABLE_KEY=os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY=os.environ.get('STRIPE_TEST_SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_KEY = '453815099038621'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a271671d795db559845758b81df34791'  # App Secret

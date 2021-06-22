@@ -9,6 +9,10 @@ django-allauth = "*"
 stripe = "*"
 pillow = "*"
 psycopg2-binary = "*"
+social-auth-app-django = "*"
+django-extensions = "*"
+werkzeug = "*"
+pyopen = "*"
 
 [dev-packages]
 
